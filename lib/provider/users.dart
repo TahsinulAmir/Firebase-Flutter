@@ -8,5 +8,7 @@ class Users with ChangeNotifier {
 
   final db = FirebaseFirestore.instance;
 
-  void addUser() {}
+  void addUser() {
+    CollectionReference users = db.collection("users");
+  }
 }
