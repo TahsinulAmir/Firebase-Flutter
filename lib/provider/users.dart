@@ -15,5 +15,8 @@ class Users with ChangeNotifier {
       'lastname': lastnameCtrl.text,
       'age': ageCtrl.text,
     });
+    firstnameCtrl.clear();
+    lastnameCtrl.clear();
+    ageCtrl.clear();
   }
 }
