@@ -1,3 +1,4 @@
+import 'package:firebaseflutter/screen/add_users.dart';
 import 'package:flutter/material.dart';
 
 class UserScreen extends StatelessWidget {
@@ -7,7 +8,14 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddUsers(),
+            ),
+          );
+        },
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
