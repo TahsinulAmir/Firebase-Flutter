@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebaseflutter/provider/users.dart';
 import 'package:firebaseflutter/screen/users_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
 
@@ -19,7 +21,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UserScreen(),
+      home: ChangeNotifierProvider(
+        create: (context) => Users(),
+        child: UserScreen(),
+      ),
     );
   }
 }
