@@ -9,14 +9,20 @@ class Users with ChangeNotifier {
   final db = FirebaseFirestore.instance;
 
   void addUser() {
-    CollectionReference users = db.collection("users");
-    users.add({
-      'firstname': firstnameCtrl.text,
-      'lastname': lastnameCtrl.text,
-      'age': ageCtrl.text,
-    });
-    firstnameCtrl.clear();
-    lastnameCtrl.clear();
-    ageCtrl.clear();
+    if (firstnameCtrl.text.isNotEmpty &&
+        lastnameCtrl.text.isNotEmpty &&
+        ageCtrl.text.isNotEmpty) {
+      CollectionReference users = db.collection("users");
+      users.add({
+        'firstname': firstnameCtrl.text,
+        'lastname': lastnameCtrl.text,
+        'age': ageCtrl.text,
+      });
+      firstnameCtrl.clear();
+      lastnameCtrl.clear();
+      ageCtrl.clear();
+    } else {
+      print("Salah Satu Data Kosong");
+    }
   }
 }
