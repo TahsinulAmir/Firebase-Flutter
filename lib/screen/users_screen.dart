@@ -1,5 +1,7 @@
+import 'package:firebaseflutter/provider/users.dart';
 import 'package:firebaseflutter/screen/add_users.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
@@ -12,7 +14,10 @@ class UserScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => AddUsers(),
+              builder: (context) => ChangeNotifierProvider(
+                create: (context) => Users(),
+                child: AddUsers(),
+              ),
             ),
           );
         },

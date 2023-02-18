@@ -10,5 +10,10 @@ class Users with ChangeNotifier {
 
   void addUser() {
     CollectionReference users = db.collection("users");
+    users.add({
+      'firstname': firstnameCtrl.text,
+      'lastname': lastnameCtrl.text,
+      'age': ageCtrl.text,
+    });
   }
 }

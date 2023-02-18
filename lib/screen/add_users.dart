@@ -45,7 +45,9 @@ class AddUsers extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                users.addUser();
+              },
               child: Text('Add User'),
             ),
           ],
