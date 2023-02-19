@@ -24,5 +24,11 @@ class Users with ChangeNotifier {
     } else {
       print("Salah Satu Data Kosong");
     }
+
+    Future<void> getUsers() async {
+      CollectionReference users = db.collection("users");
+
+      users.get();
+    }
   }
 }
