@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebaseflutter/provider/users.dart';
 import 'package:firebaseflutter/screen/add_users.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,7 @@ class UserScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Users"),
       ),
-      body: FutureBuilder(builder: (context, snapshot) {
+      body: FutureBuilder<QuerySnapshot<Object?>>(builder: (context, snapshot) {
         return ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
