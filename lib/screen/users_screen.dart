@@ -29,9 +29,10 @@ class UserScreen extends StatelessWidget {
         title: Text("Users"),
       ),
       body: FutureBuilder<QuerySnapshot<Object?>>(
-          future: users.getUsers(),
-          builder: (context, snapshot) {
-            // print(snapshot.data!.docs[2].data());
+        future: users.getUsers(),
+        builder: (context, snapshot) {
+          // print(snapshot.data!.docs[2].data());
+          if (snapshot.connectionState == ConnectionState.done) {
             var data = snapshot.data!.docs;
             return ListView.builder(
               itemCount: data.length,
@@ -43,7 +44,12 @@ class UserScreen extends StatelessWidget {
                 );
               },
             );
-          }),
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
