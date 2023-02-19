@@ -28,29 +28,27 @@ class UserScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Users"),
       ),
-      // GET DATA SEKALI DARI FIREBASE
-      // body: FutureBuilder<QuerySnapshot<Object?>>(
-      //   future: users.getUsers(),
-      //   builder: (context, snapshot) {
-      //     // print(snapshot.data!.docs[2].data());
-      //     if (snapshot.connectionState == ConnectionState.done) {
-      //       var data = snapshot.data!.docs;
-      //       return ListView.builder(
-      //         itemCount: data.length,
-      //         itemBuilder: (context, index) {
-      //           final user = data[index].data() as Map<String, dynamic>;
-      //           return ListTile(
-      //             title: Text('${user['firstname']} ${user['lastname']}'),
-      //             subtitle: Text("Age : ${user['age']}"),
-      //           );
-      //         },
-      //       );
-      //     }
-      //     return Center(
-      //       child: CircularProgressIndicator(),
-      //     );
-      //   },
-      // ),
+      body: StreamBuilder<QuerySnapshot<Object?>>(
+        stream: users.streamUsers(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            var data = snapshot.data!.docs;
+            return ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (context, index) {
+                final user = data[index].data() as Map<String, dynamic>;
+                return ListTile(
+                  title: Text('${user['firstname']} ${user['lastname']}'),
+                  subtitle: Text("Age : ${user['age']}"),
+                );
+              },
+            );
+          }
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      ),
     );
   }
 }
