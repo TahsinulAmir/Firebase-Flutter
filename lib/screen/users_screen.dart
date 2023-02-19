@@ -26,15 +26,17 @@ class UserScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Users"),
       ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text("Name"),
-            subtitle: Text("Age : 20"),
-          );
-        },
-      ),
+      body: FutureBuilder(builder: (context, snapshot) {
+        return ListView.builder(
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text("Name"),
+              subtitle: Text("Age : 20"),
+            );
+          },
+        );
+      }),
     );
   }
 }
