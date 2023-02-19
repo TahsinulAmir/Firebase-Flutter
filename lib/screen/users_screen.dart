@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebaseflutter/provider/users.dart';
 import 'package:firebaseflutter/screen/add_users.dart';
+import 'package:firebaseflutter/screen/edit_users.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,6 +39,17 @@ class UserScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final user = data[index].data() as Map<String, dynamic>;
                 return ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider(
+                          create: (context) => Users(),
+                          child: EditUsers(),
+                        ),
+                      ),
+                    );
+                  },
                   title: Text('${user['firstname']} ${user['lastname']}'),
                   subtitle: Text("Age : ${user['age']}"),
                 );
