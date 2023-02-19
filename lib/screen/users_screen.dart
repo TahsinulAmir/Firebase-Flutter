@@ -31,13 +31,15 @@ class UserScreen extends StatelessWidget {
       body: FutureBuilder<QuerySnapshot<Object?>>(
           future: users.getUsers(),
           builder: (context, snapshot) {
-            print(snapshot.data!.docs[2].data());
+            // print(snapshot.data!.docs[2].data());
+            var data = snapshot.data!.docs;
             return ListView.builder(
-              itemCount: 10,
+              itemCount: data.length,
               itemBuilder: (context, index) {
+                final user = data[index].data() as Map<String, dynamic>;
                 return ListTile(
-                  title: Text("Name"),
-                  subtitle: Text("Age : 20"),
+                  title: Text('${user['firstname']} ${user['lastname']}'),
+                  subtitle: Text("Age : ${user['age']}"),
                 );
               },
             );
