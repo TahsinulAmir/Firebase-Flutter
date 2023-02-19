@@ -45,7 +45,9 @@ class UserScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => ChangeNotifierProvider(
                           create: (context) => Users(),
-                          child: EditUsers(),
+                          child: EditUsers(
+                            idDoc: data[index].id,
+                          ),
                         ),
                       ),
                     );
