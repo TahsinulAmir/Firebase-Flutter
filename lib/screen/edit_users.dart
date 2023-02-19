@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class EditUsers extends StatelessWidget {
-  const EditUsers({super.key});
+  EditUsers({super.key, required this.idDoc});
+  String idDoc;
 
   @override
   Widget build(BuildContext context) {
