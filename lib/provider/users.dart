@@ -25,10 +25,10 @@ class Users with ChangeNotifier {
       print("Salah Satu Data Kosong");
     }
 
-    Future<void> getUsers() async {
+    Future<QuerySnapshot<Object?>> getUsers() {
       CollectionReference users = db.collection("users");
 
-      users.get();
+      return users.get();
     }
   }
 }
