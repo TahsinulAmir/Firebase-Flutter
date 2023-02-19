@@ -17,8 +17,10 @@ class EditUsers extends StatelessWidget {
       body: FutureBuilder<DocumentSnapshot<Object?>>(
           future: users.getUserByIdDoc(idDoc),
           builder: (context, snapshot) {
-            final data = snapshot.data!.data();
-            print(data);
+            final data = snapshot.data!.data() as Map<String, dynamic>;
+            users.firstnameCtrl.text = data['firstname'];
+            users.lastnameCtrl.text = data['lastname'];
+            users.ageCtrl.text = data['age'];
             return Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
