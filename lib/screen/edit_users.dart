@@ -15,8 +15,9 @@ class EditUsers extends StatelessWidget {
         title: Text("Edit Users"),
       ),
       body: FutureBuilder<DocumentSnapshot<Object?>>(
-          future: users.getUserByIdDoc(idDoc),
-          builder: (context, snapshot) {
+        future: users.getUserByIdDoc(idDoc),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
             final data = snapshot.data!.data() as Map<String, dynamic>;
             users.firstnameCtrl.text = data['firstname'];
             users.lastnameCtrl.text = data['lastname'];
@@ -60,7 +61,13 @@ class EditUsers extends StatelessWidget {
                 ],
               ),
             );
-          }),
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
+      ),
     );
   }
 }
