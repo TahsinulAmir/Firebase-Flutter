@@ -9,6 +9,7 @@ class UserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Users users = Provider.of<Users>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -27,17 +28,20 @@ class UserScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Users"),
       ),
-      body: FutureBuilder<QuerySnapshot<Object?>>(builder: (context, snapshot) {
-        return ListView.builder(
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text("Name"),
-              subtitle: Text("Age : 20"),
+      body: FutureBuilder<QuerySnapshot<Object?>>(
+          future: users.getUsers(),
+          builder: (context, snapshot) {
+            return ListView.builder(
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                print(snapshot.data);
+                return ListTile(
+                  title: Text("Name"),
+                  subtitle: Text("Age : 20"),
+                );
+              },
             );
-          },
-        );
-      }),
+          }),
     );
   }
 }

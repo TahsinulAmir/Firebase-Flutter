@@ -24,11 +24,11 @@ class Users with ChangeNotifier {
     } else {
       print("Salah Satu Data Kosong");
     }
+  }
 
-    Future<QuerySnapshot<Object?>> getUsers() {
-      CollectionReference users = db.collection("users");
+  Future<QuerySnapshot<Object?>> getUsers() {
+    CollectionReference users = db.collection("users");
 
-      return users.get();
-    }
+    return users.get();
   }
 }
