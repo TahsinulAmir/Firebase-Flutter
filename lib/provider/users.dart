@@ -8,6 +8,11 @@ class Users with ChangeNotifier {
 
   final db = FirebaseFirestore.instance;
 
+  Future<DocumentSnapshot<Object?>> getUserByIdDoc(String id) {
+    DocumentReference docRef = db.collection("users").doc(id);
+    return docRef.get();
+  }
+
   void addUser() {
     if (firstnameCtrl.text.isNotEmpty &&
         lastnameCtrl.text.isNotEmpty &&
