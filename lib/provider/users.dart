@@ -26,9 +26,9 @@ class Users with ChangeNotifier {
     }
   }
 
-  Future<QuerySnapshot<Object?>> getUsers() {
+  Future<QuerySnapshot<Object?>> getUsers() async {
     CollectionReference users = db.collection("users");
 
-    return users.get();
+    return await users.get();
   }
 }
