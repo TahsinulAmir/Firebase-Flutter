@@ -47,6 +47,7 @@ class AddUsers extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 users.addUser();
+                Navigator.pop(context);
               },
               child: Text('Add User'),
             ),
