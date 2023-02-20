@@ -55,7 +55,10 @@ class EditUsers extends StatelessWidget {
                     height: 10,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      users.updateUser(idDoc);
+                      Navigator.pop(context);
+                    },
                     child: Text('Edit User'),
                   ),
                 ],
