@@ -24,6 +24,11 @@ class Users with ChangeNotifier {
     });
   }
 
+  void deleteUser(String id) {
+    DocumentReference docRef = db.collection("users").doc(id);
+    docRef.delete();
+  }
+
   void addUser() {
     if (firstnameCtrl.text.isNotEmpty &&
         lastnameCtrl.text.isNotEmpty &&
