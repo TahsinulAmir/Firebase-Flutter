@@ -1,9 +1,10 @@
-import 'dart:html';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:provider/provider.dart';
+import 'package:firebaseflutter/provider/storage.dart';
 
 class UploadScreen extends StatelessWidget {
   const UploadScreen({super.key});
@@ -17,7 +18,9 @@ class UploadScreen extends StatelessWidget {
       ),
       body: Center(
         child: OutlinedButton(
-          onPressed: () {},
+          onPressed: () {
+            storage.UploadFile();
+          },
           child: Text("Upload"),
         ),
       ),
