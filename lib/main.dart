@@ -1,10 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebaseflutter/provider/users.dart';
+import 'package:firebaseflutter/screen/upload_screen.dart';
 import 'package:firebaseflutter/screen/users_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
+import 'provider/storage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,9 +23,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider(
-        create: (context) => Users(),
-        child: UserScreen(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => Users(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => Storage(),
+          ),
+        ],
+        child: UploadScreen(),
       ),
     );
   }
