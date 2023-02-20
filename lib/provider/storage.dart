@@ -7,22 +7,26 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 class Storage with ChangeNotifier {
   void UploadFile() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles();
+    // Multiple Upload
+    FilePickerResult? result =
+        await FilePicker.platform.pickFiles(allowMultiple: true);
 
     if (result != null) {
-      // Mendapatkan file
-      File file = File(result.files.single.path!);
+      // Looping
+      for (var element in result.files) {
+        // Get name file
+        String name = element.name;
+        // Get File
+        File file = File(element.path!);
 
-      // Upload file ke firebase
-      try {
-        await FirebaseStorage.instance
-            .ref(result.files.single.name)
-            .putFile(file);
-      } on firebase_storage.FirebaseException catch (e) {
-        print(e);
+        // Upload to firebase
+        try {
+          await FirebaseStorage.instance.ref(name).putFile(file);
+        } on firebase_storage.FirebaseException catch (e) {
+          print(e);
+        }
       }
     } else {
-      // User canceled the picker
       print("Cancel");
     }
   }
