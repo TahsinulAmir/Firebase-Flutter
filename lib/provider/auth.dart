@@ -9,4 +9,6 @@ class Auth with ChangeNotifier {
   Stream<User?> changeState() {
     return auth.authStateChanges();
   }
+
+  void login(String email, String password) {}
 }

@@ -1,6 +1,8 @@
+import 'package:firebaseflutter/provider/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -9,6 +11,8 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController emailCtrl = TextEditingController();
     TextEditingController passwordCtrl = TextEditingController();
+    // call provider Auth
+    Auth auth = Provider.of<Auth>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
@@ -37,7 +41,9 @@ class LoginScreen extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                auth.login(emailCtrl.text, passwordCtrl.text);
+              },
               child: Text("Login"),
             )
           ],
