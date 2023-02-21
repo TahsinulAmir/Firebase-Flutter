@@ -11,7 +11,31 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Login"),
       ),
-      body: Center(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ElevatedButton(onPressed: () {}, child: Text("Login"))
+          ],
+        ),
+      ),
     );
   }
 }
