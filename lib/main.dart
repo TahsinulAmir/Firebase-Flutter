@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebaseflutter/provider/auth.dart';
 import 'package:firebaseflutter/provider/users.dart';
 import 'package:firebaseflutter/screen/login_screen.dart';
 import 'package:firebaseflutter/screen/register_screen.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider(
             create: (context) => Storage(),
+          ),
+          ChangeNotifierProvider(
+            create: (context) => Auth(),
           ),
         ],
         child: RegisterScreen(),
