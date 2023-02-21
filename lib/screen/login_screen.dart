@@ -1,4 +1,5 @@
 import 'package:firebaseflutter/provider/auth.dart';
+import 'package:firebaseflutter/screen/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -40,12 +41,33 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            ElevatedButton(
-              onPressed: () {
-                auth.login(emailCtrl.text, passwordCtrl.text);
-              },
-              child: Text("Login"),
-            )
+            Row(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    auth.login(emailCtrl.text, passwordCtrl.text);
+                  },
+                  child: Text("Login"),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider(
+                          create: (context) => Auth(),
+                          child: RegisterScreen(),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text("Register"),
+                ),
+              ],
+            ),
           ],
         ),
       ),

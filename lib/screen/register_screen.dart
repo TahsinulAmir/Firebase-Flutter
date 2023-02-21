@@ -41,7 +41,12 @@ class RegisterScreen extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            ElevatedButton(onPressed: () {}, child: Text("Register"))
+            ElevatedButton(
+              onPressed: () {
+                auth.register(emailCtrl.text, passwordCtrl.text);
+              },
+              child: Text("Register"),
+            ),
           ],
         ),
       ),
