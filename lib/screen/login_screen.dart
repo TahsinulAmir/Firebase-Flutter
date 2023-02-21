@@ -1,5 +1,6 @@
 import 'package:firebaseflutter/provider/auth.dart';
 import 'package:firebaseflutter/screen/register_screen.dart';
+import 'package:firebaseflutter/screen/reset_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -65,6 +66,20 @@ class LoginScreen extends StatelessWidget {
                     );
                   },
                   child: Text("Register"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ChangeNotifierProvider(
+                          create: (context) => Auth(),
+                          child: ResetPassword(),
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text("Reset Password"),
                 ),
               ],
             ),
