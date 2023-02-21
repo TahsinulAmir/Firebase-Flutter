@@ -11,6 +11,22 @@ class Auth with ChangeNotifier {
     return auth.idTokenChanges();
   }
 
+  // SigIn with anonymous account
+  Future signInWithAnon() async {
+    try {
+      final userCredential = await FirebaseAuth.instance.signInAnonymously();
+      print("Signed in with temporary account.");
+    } on FirebaseAuthException catch (e) {
+      switch (e.code) {
+        case "operation-not-allowed":
+          print("Anonymous auth hasn't been enabled for this project.");
+          break;
+        default:
+          print("Unknown error.");
+      }
+    }
+  }
+
   // Func sign in with google account
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow

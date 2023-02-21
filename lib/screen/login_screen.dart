@@ -89,6 +89,12 @@ class LoginScreen extends StatelessWidget {
               },
               child: Text("Sign In with Google Account"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                auth.signInWithAnon();
+              },
+              child: Text("Sign In with Anonymous Account"),
+            ),
           ],
         ),
       ),
