@@ -27,6 +27,12 @@ class UserScreen extends StatelessWidget {
         child: Icon(Icons.add),
       ),
       appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.logout),
+          ),
+        ],
         title: Text("Users"),
       ),
       body: StreamBuilder<QuerySnapshot<Object?>>(
