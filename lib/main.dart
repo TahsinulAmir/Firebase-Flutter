@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebaseflutter/provider/users.dart';
+import 'package:firebaseflutter/screen/login_screen.dart';
 import 'package:firebaseflutter/screen/upload_screen.dart';
 import 'package:firebaseflutter/screen/users_screen.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             create: (context) => Storage(),
           ),
         ],
-        child: UploadScreen(),
+        child: LoginScreen(),
       ),
     );
   }
