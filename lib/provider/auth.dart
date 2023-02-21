@@ -7,7 +7,7 @@ class Auth with ChangeNotifier {
 
   // Decalare to save setiap perubahan login/regist
   Stream<User?> changeState() {
-    return auth.authStateChanges();
+    return auth.idTokenChanges();
   }
 
   void login(String email, String password) async {
@@ -28,10 +28,11 @@ class Auth with ChangeNotifier {
   // Membutuhkah parameter email dan password seperti login
   void register(String email, String password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      final userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      userCredential.user!.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       print(e);
     }
