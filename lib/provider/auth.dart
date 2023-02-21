@@ -10,6 +10,15 @@ class Auth with ChangeNotifier {
     return auth.idTokenChanges();
   }
 
+  // membutuhkan email
+  void resetPassword(String email) async {
+    // jika email tidak kosong
+    if (email != "") {
+      // maka jalankan ini
+      await auth.sendPasswordResetEmail(email: email);
+    }
+  }
+
   void login(String email, String password) async {
     try {
       await auth.signInWithEmailAndPassword(

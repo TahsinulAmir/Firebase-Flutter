@@ -29,7 +29,10 @@ class ResetPassword extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                auth.resetPassword(emailCtrl.text);
+                Navigator.pop(context);
+              },
               child: Text("Reset Password"),
             ),
           ],
