@@ -10,6 +10,8 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailCtrl = TextEditingController();
+    TextEditingController passwordCtrl = TextEditingController();
     // call provider Auth
     Auth auth = Provider.of<Auth>(context);
     return Scaffold(
@@ -22,6 +24,7 @@ class RegisterScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+              controller: emailCtrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),
@@ -30,6 +33,7 @@ class RegisterScreen extends StatelessWidget {
               height: 10,
             ),
             TextField(
+              controller: passwordCtrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),

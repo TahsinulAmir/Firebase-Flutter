@@ -25,5 +25,15 @@ class Auth with ChangeNotifier {
     await auth.signOut();
   }
 
-  void register() async {}
+  // Membutuhkah parameter email dan password seperti login
+  void register(String email, String password) async {
+    try {
+      await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+  }
 }
