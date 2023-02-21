@@ -83,6 +83,12 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
+            TextButton(
+              onPressed: () {
+                auth.signInWithGoogle();
+              },
+              child: Text("Sign In with Google Account"),
+            ),
           ],
         ),
       ),
