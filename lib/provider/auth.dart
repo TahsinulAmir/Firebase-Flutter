@@ -20,4 +20,8 @@ class Auth with ChangeNotifier {
       print(e);
     }
   }
+
+  void logOut() async {
+    await auth.signOut();
+  }
 }

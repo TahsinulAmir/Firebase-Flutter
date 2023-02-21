@@ -5,12 +5,17 @@ import 'package:firebaseflutter/screen/edit_users.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/auth.dart';
+
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // call provider User
     Users users = Provider.of<Users>(context);
+    // call provider Auth
+    Auth auth = Provider.of<Auth>(context);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -29,7 +34,9 @@ class UserScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              auth.logOut();
+            },
             icon: Icon(Icons.logout),
           ),
         ],
