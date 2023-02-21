@@ -7,6 +7,8 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController emailCtrl = TextEditingController();
+    TextEditingController passwordCtrl = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
@@ -17,6 +19,7 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+              controller: emailCtrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),
@@ -25,6 +28,7 @@ class LoginScreen extends StatelessWidget {
               height: 10,
             ),
             TextField(
+              controller: passwordCtrl,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
               ),
