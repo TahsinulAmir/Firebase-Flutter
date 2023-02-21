@@ -44,6 +44,7 @@ class RegisterScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 auth.register(emailCtrl.text, passwordCtrl.text);
+                Navigator.pop(context);
               },
               child: Text("Register"),
             ),
