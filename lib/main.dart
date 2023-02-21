@@ -5,6 +5,7 @@ import 'package:firebaseflutter/screen/login_screen.dart';
 import 'package:firebaseflutter/screen/register_screen.dart';
 import 'package:firebaseflutter/screen/upload_screen.dart';
 import 'package:firebaseflutter/screen/users_screen.dart';
+import 'package:firebaseflutter/screen/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             create: (context) => Auth(),
           ),
         ],
-        child: RegisterScreen(),
+        child: Wrapper(),
       ),
     );
   }
