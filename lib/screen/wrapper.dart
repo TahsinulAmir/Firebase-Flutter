@@ -17,6 +17,7 @@ class Wrapper extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: auth.changeState(),
       builder: (context, snapshot) {
+        print(snapshot.data);
         // Perbandingan
         if (snapshot.connectionState == ConnectionState.active) {
           return (snapshot.data != null) ? UserScreen() : LoginScreen();
