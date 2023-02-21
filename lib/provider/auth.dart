@@ -24,4 +24,6 @@ class Auth with ChangeNotifier {
   void logOut() async {
     await auth.signOut();
   }
+
+  void register() async {}
 }
